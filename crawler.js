@@ -83,19 +83,18 @@ sebugCrawler.get = function(url, callback) {
 sebugCrawler.appdir = function () {
     sebugCrawler.get(URL.entry, function(res) {
         var dom = $(res);
-        db.run("DELETE FROM dir");
-        var stmt = db.prepare("INSERT INTO dir(key, title, appdir, nid) VALUES (?,?,?,'ROWID');");
+        
         dom.find(".applists").each(function() {
             var key = this.id.substring(0, 1);
             $(this).find("li > a").each(function() {
                 var appdir = this.href, title = this.innerHTML;
                 appdir = appdir.substring(appdir.lastIndexOf("/") + 1);
-                stmt.run(key, title, appdir);
-                console.log("Creating directory:", title);
-            });	
+                list.push({ key: key, appdir: appdir, title: title })
+            });            
         });
-        stmt.finalize();
-        console.log("AppDir Finished.");
+        db.flushAppDir(list, function() {
+            console.log("AppDir Finished.");
+        });
     });
 };
 

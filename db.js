@@ -22,6 +22,16 @@ exports.setup = function(callback) {
     ( callback || function(){} )();
 }
 
+exports.flushAppDir = function(list) {
+    db.run("DELETE FROM dir", [], function(){
+        var stmt = db.prepare("INSERT INTO dir(key, title, appdir, nid) VALUES (?,?,?,'ROWID');");
+        list.forEach(function(item, index, arr) {
+            stmt.run(item.key, item.title, item.appdir);
+        });
+        stmt.finalize();
+    });
+    
+}
 //存储漏洞
 exports.insertVul = function(data, callback) {
 	db.run(SQL.insertVul, data, callback);
