@@ -11,12 +11,16 @@ http://pan.baidu.com/s/1i3iIfQX
 
 ## 配置
 运行npm install安装所需组件
+下载phantomjs(http://phantomjs.org/)的二进制程序（如phantomjs.exe），放到程序目录中
+运行`node app.js --setup`准备数据库
 按需修改配置（默认也可）
 
 ## 抓取
-* 修改config变量以设定抓取的区间（如只需要0~100页）
-* 运行`node crawler.js`，程序将把抓取到的内容保存在result/sebug.db中
+* 运行`node app.js --full` 抓取整站
+* 运行`node app.js --range 1 100` 抓取前1~100页
+* 运行`node app.js --keyword dedecms` 抓取仅包含关键字的漏洞结果
+* 程序将把抓取到的内容保存在result/sebug.db中
 * 整个抓取时间取决于您的网络环境和抓取区间范围，如我在抓取整站内容的时候耗时约7小时
 
 ## WEB界面
-抓取完成后，运行`node reader.js`即可。
+抓取完成后，运行`node app.js --web`即可。

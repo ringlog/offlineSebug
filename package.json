@@ -1,13 +1,19 @@
 {
   "name" : "SebugOffline",
-  "version" : "0.0.1",
+  "version" : "0.1.1",
   "description": "离线版Sebug",
   "dependencies" : {
     "express" : "3.x",
     "jQuery" : "1.x",
+	"jsdom": "*",
     "phantom" : "0.x",
     "sqlite3" : "2.x",
-    "xmlhttprequest" : "1.6.x"
+    "xmlhttprequest" : "1.6.x",
+	"ejs": "*"
+  },
+  "repository" : {
+	"type" : "git",
+	"url" : "https://github.com/ChiChou/offlineSebug.git"
   },
   "author": {
     "name": "ChiChou",
