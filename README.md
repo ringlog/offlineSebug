@@ -11,8 +11,11 @@ http://pan.baidu.com/s/1i3iIfQX
 
 ## 配置
 运行npm install安装所需组件
-下载phantomjs(http://phantomjs.org/)的二进制程序（如phantomjs.exe），放到程序目录中
+
+下载[phantomjs](http://phantomjs.org/) 的二进制程序（如phantomjs.exe），放到程序目录中
+
 运行`node app.js --setup`准备数据库
+
 按需修改配置（默认也可）
 
 ## 抓取
